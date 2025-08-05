@@ -2,8 +2,14 @@ package com.example.demo.model;
 
 import java.util.Date;
 
-// 這是一個 POJO（Plain Old Java Object），也稱為 Java Bean 或資料實體類別（Entity）
-// 用來表示一個「學生」的資料結構，通常會對應到資料庫中的一張 student 資料表
+// 這是一個 POJO（Plain Old Java Object），
+// 一個很單純的 Java 類別,
+// 通常只有屬性 + getter/setter + 建構子
+// 是用來儲存資料的「資料類別（data class）
+//
+// 也稱為 Java Bean 或資料實體類別（Entity）
+// 用來表示一個「學生」的資料結構，
+// 通常會對應到資料庫中的一張 student 資料表
 public class Student {
 
     // 主鍵（Primary Key），用來唯一識別每一筆學生資料

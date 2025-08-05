@@ -27,6 +27,38 @@ public class StudentController {
 
     // 宣告 create 方法，回傳 ResponseEntity<Student> 代表 HTTP 回應中包含一個學生資料
     // @RequestBody 表示將 request 的 JSON 內容轉成 Student 物件（由 Spring 自動完成資料綁定與反序列化）
+    /*
+    「泛型（Generics）」
+       把它想成「容器裡面要放什麼東西」
+       我們先看沒有 <...> 的寫法：
+       List list = new ArrayList();
+       list.add("Leo");
+       list.add(123); // 也可以加數字
+       這樣寫，list 可以放任何東西，但你取出來就不知道是什麼型別，要自己轉型（cast），很危險。
+
+       有了泛型後，像這樣寫：
+       List<String> list = new ArrayList<>();
+       list.add("Leo");
+       list.add(123); // 錯誤！只能放 String
+       <String> 的意思是：「這個 List 只能放 String 字串」，安全又清楚。
+
+       ResponseEntity<Student>
+       這就像是：
+        「我會回傳一個 HTTP 回應，裡面裝的是 Student 類別的資料。」
+         比如：學生姓名、學號等。
+         因為 ResponseEntity<Student> 可以多帶一層「包裝」資訊，
+         除了資料本身，
+         還能加上 狀態碼（200、404 等）和標頭（headers）。
+         @GetMapping("/students/{id}")
+         public ResponseEntity<Student> getStudent(@PathVariable int id) {
+         Student student = studentRepository.findById(id).orElse(null);
+           if (student != null) {
+               return ResponseEntity.ok(student); // 回傳 200 OK + 資料
+           } else {
+               return ResponseEntity.notFound().build(); // 回傳 404 Not Found
+           }
+        }
+     --------------------------------------------------------------------*/
     public ResponseEntity<Student> create(@RequestBody Student student) {
 
         // 呼叫 service 層的 insert 方法，將學生資料寫入資料庫
